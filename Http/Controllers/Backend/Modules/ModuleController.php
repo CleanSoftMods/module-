@@ -1,5 +1,4 @@
 <?php
-
 namespace Cms\Modules\Admin\Http\Controllers\Backend\Modules;
 
 use Cms\Modules\Admin\Datatables\ModuleManager;
@@ -21,7 +20,6 @@ class ModuleController extends BaseAdminController
         if (in_array('core-module', $model->keywords)) {
             return app()->abort(401);
         }
-
         try {
             app('modules')->find($module->alias)->enable();
         } catch (Exception $e) {
@@ -34,7 +32,6 @@ class ModuleController extends BaseAdminController
         if (in_array('core-module', $model->keywords)) {
             return app()->abort(401);
         }
-
         try {
             app('modules')->find($module->alias)->disable();
         } catch (Exception $e) {

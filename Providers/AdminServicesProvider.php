@@ -1,5 +1,4 @@
 <?php
-
 namespace Cms\Modules\Admin\Providers;
 
 use Illuminate\Support\ServiceProvider;
@@ -18,11 +17,9 @@ class AdminServicesProvider extends ServiceProvider
                 'cms.admin.admin.services_views',
                 array_merge(config('cms.admin.admin.services_views'), ['admin::admin.config.partials.bugsnag'])
             );
-
             $this->app->register('Bugsnag\BugsnagLaravel\BugsnagLaravelServiceProvider');
             AliasLoader::getInstance()->alias('Bugsnag', 'Bugsnag\BugsnagLaravel\BugsnagFacade');
         }
-
         // register datatables
         $this->app->register('Yajra\Datatables\DatatablesServiceProvider');
     }

@@ -1,5 +1,4 @@
 <?php
-
 namespace Cms\Modules\Admin\Composers;
 
 use GuzzleHttp\Client;
@@ -13,12 +12,10 @@ class Widgets
         $url = 'https://api.github.com/repos/Cysha/PhoenixCMS/commits';
         $response = with(new Client())->get($url);
         $github = json_decode($response->getBody(), true);
-
         $currentVersion = 'Unknown';
-        if (File::exists(base_path().'/.git/FETCH_HEAD')) {
-            $currentVersion = substr(File::get(base_path().'/.git/FETCH_HEAD'), 0, 40);
+        if (File::exists(base_path() . '/.git/FETCH_HEAD')) {
+            $currentVersion = substr(File::get(base_path() . '/.git/FETCH_HEAD'), 0, 40);
         }
-
         $view->with('info', [
             'upToDate' => $currentVersion != 'Unknown' ? (array_get($github, '0.sha') == $currentVersion) : null,
             'currentVersion' => $currentVersion,

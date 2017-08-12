@@ -1,7 +1,5 @@
 <?php
-
 namespace Cms\Modules\Admin\Models;
-
 class Widget extends BaseModel
 {
     public $table = 'dashboard_widgets';

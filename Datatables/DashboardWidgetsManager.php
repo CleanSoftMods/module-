@@ -1,7 +1,5 @@
 <?php
-
 namespace Cms\Modules\Admin\Datatables;
-
 class DashboardWidgetsManager
 {
     public function boot()
@@ -22,7 +20,6 @@ class DashboardWidgetsManager
                     ],
                 ],
             ],
-
             /*
              * Set up some table options, these will be passed back to the view
              */
@@ -36,11 +33,9 @@ class DashboardWidgetsManager
                 'source' => 'admin.config.dashboard',
                 'collection' => function () {
                     $model = 'Cms\Modules\Admin\Models\Widget';
-
                     return $model::with('options')->get();
                 },
             ],
-
             /*
              * Lists the tables columns
              */
@@ -54,7 +49,6 @@ class DashboardWidgetsManager
                     'searchable' => true,
                     // 'width' => '10%',
                 ],
-
                 'component' => [
                     'th' => 'Component',
                     'tr' => function ($model) {
@@ -64,7 +58,6 @@ class DashboardWidgetsManager
                     'searchable' => true,
                     // 'width' => '10%',
                 ],
-
                 'grid' => [
                     'th' => 'Location',
                     'tr' => function ($model) {
@@ -74,12 +67,10 @@ class DashboardWidgetsManager
                     'searchable' => true,
                     // 'width' => '10%',
                 ],
-
                 'actions' => [
                     'th' => 'Actions',
                     'tr' => function ($model) {
                         $return = [];
-
                         if (hasPermission('manage.update', 'admin_dashboard')) {
                             $return[] = [
                                 'btn-title' => 'Edit',
@@ -88,7 +79,6 @@ class DashboardWidgetsManager
                                 'btn-icon' => 'fa fa-pencil',
                             ];
                         }
-
                         if (hasPermission('manage.delete', 'admin_dashboard')) {
                             $return[] = [
                                 'btn-title' => 'Delete',
@@ -99,7 +89,6 @@ class DashboardWidgetsManager
                                 'btn-extras' => 'data-remote="true" data-confirm="Are you sure you want to delete this widget?" data-disable-with="<i class=\'fa fa-refresh fa-spin\'></i>"',
                             ];
                         }
-
                         return $return;
                     },
                 ],

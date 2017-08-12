@@ -1,5 +1,4 @@
 <?php
-
 namespace Cms\Modules\Admin\Events\Handlers;
 
 use Cms\Modules\Admin\Events\ConfigWasSaved;
@@ -17,10 +16,9 @@ class SetDebug
         if ($event->key !== 'cms.core.app.debug') {
             return;
         }
-
         $path = config('cms.core.app.debugfile');
         if ($event->value == 'true') {
-            File::put($path, 'DEBUG Enabled - '.time());
+            File::put($path, 'DEBUG Enabled - ' . time());
         } else {
             if (File::exists($path)) {
                 File::delete($path);

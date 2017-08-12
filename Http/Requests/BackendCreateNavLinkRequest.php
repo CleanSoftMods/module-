@@ -1,5 +1,4 @@
 <?php
-
 namespace Cms\Modules\Admin\Http\Requests;
 
 use Cms\Http\Requests\Request;

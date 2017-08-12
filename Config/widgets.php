@@ -1,5 +1,4 @@
 <?php
-
 return [
     'dashboard' => [
         'admin-blank',

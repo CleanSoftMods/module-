@@ -1,5 +1,4 @@
 <?php
-
 return [
     'admin_config' => [
         'access' => 'Have access to the admin panel',
@@ -12,7 +11,6 @@ return [
         'routes' => 'Clear and Cache routes',
         'dashboard' => 'Configure the dashboard',
     ],
-
     'admin_dashboard' => [
         'manage' => 'Manage widgets',
         'manage.create' => 'Create a widget instance?',
@@ -20,7 +18,6 @@ return [
         'manage.update' => 'Update a widgets configuration',
         'manage.delete' => 'Remove a widget from the dashboard',
     ],
-
     'admin_modules' => [
         // backend manager
         'manage' => 'Manage modules',
@@ -28,12 +25,10 @@ return [
         'manage.read' => 'Read a module\'s configuration',
         'manage.update' => 'Update a module\'s configuration',
         'manage.delete' => 'Remove a module from the site',
-
         'module.install' => 'Install a new module',
         'module.uninstall' => 'Uninstall a module',
         'module.toggle' => 'Toggle a module\'s enabled state',
     ],
-
     'admin_nav' => [
         // backend manager
         'manage' => 'Manage navigations',
@@ -42,5 +37,4 @@ return [
         'manage.update' => 'Update a navigation configuration',
         'manage.delete' => 'Remove a navigation from the site',
     ],
-
 ];

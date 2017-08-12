@@ -1,5 +1,4 @@
 <?php
-
 namespace Cms\Modules\Admin\Providers;
 
 use Cms\Modules\Core\Providers\BaseModuleProvider;
@@ -36,13 +35,11 @@ class AdminModuleServiceProvider extends BaseModuleProvider
      * @var array
      */
     protected $bindings = [
-
     ];
 
     public function boot()
     {
         parent::boot();
-
-        view()->composer('admin::admin.config.dashboard', DashboardConfig::class.'@listWidgets');
+        view()->composer('admin::admin.config.dashboard', DashboardConfig::class . '@listWidgets');
     }
 }

@@ -1,5 +1,4 @@
 <?php
-
 namespace Cms\Modules\Admin\Providers;
 
 use Cms\Modules\Core\Providers\BaseEventsProvider;
@@ -26,7 +25,6 @@ class AdminEventsProvider extends BaseEventsProvider
      * @var array
      */
     protected $subscribe = [
-
     ];
 
     /**
@@ -35,7 +33,6 @@ class AdminEventsProvider extends BaseEventsProvider
     public function boot()
     {
         parent::boot();
-
         Core\Models\DBConfig::saved(function ($model) {
             Cache::forget('core.config_table');
             event(new Admin\Events\ConfigWasSaved($model->key, $model->value));

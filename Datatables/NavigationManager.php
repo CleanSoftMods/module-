@@ -1,7 +1,5 @@
 <?php
-
 namespace Cms\Modules\Admin\Datatables;
-
 class NavigationManager
 {
     public function boot()
@@ -21,7 +19,6 @@ class NavigationManager
                     ],
                 ],
             ],
-
             /*
              * Set up some table options, these will be passed back to the view
              */
@@ -35,11 +32,9 @@ class NavigationManager
                 'source' => 'admin.nav.manager',
                 'collection' => function () {
                     $model = 'Cms\Modules\Core\Models\Navigation';
-
                     return $model::with('linkCount')->get();
                 },
             ],
-
             /*
              * Lists the tables columns
              */
@@ -73,23 +68,19 @@ class NavigationManager
                 'aggregate' => [
                     'th' => 'Link Count',
                     'tr' => function ($model) {
-
                         if ($model->getRelation('linkCount')) {
                             return $model->linkCount;
                         }
-
                         return '0';
                     },
                     'orderable' => true,
                     'searchable' => true,
                     'width' => '10%',
                 ],
-
                 'actions' => [
                     'th' => 'Actions',
                     'tr' => function ($model) {
                         $return = [];
-
                         if (hasPermission('manage.update', 'admin_nav')) {
                             $return[] = [
                                 'btn-title' => 'Manage',
@@ -98,7 +89,6 @@ class NavigationManager
                                 'btn-icon' => 'fa fa-file-text-o',
                             ];
                         }
-
                         return $return;
                     },
                 ],

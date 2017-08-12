@@ -1,5 +1,4 @@
 <?php
-
 namespace Cms\Modules\Admin\Providers;
 
 use Cms\Modules\Admin\Models\Widget;
@@ -18,7 +17,7 @@ class AdminRoutingProvider extends CmsRoutingProvider
      */
     protected function getFrontendRoute()
     {
-        return __DIR__.'/../Http/routes-frontend.php';
+        return __DIR__ . '/../Http/routes-frontend.php';
     }
 
     /**
@@ -26,7 +25,7 @@ class AdminRoutingProvider extends CmsRoutingProvider
      */
     protected function getBackendRoute()
     {
-        return __DIR__.'/../Http/routes-backend.php';
+        return __DIR__ . '/../Http/routes-backend.php';
     }
 
     /**
@@ -34,28 +33,24 @@ class AdminRoutingProvider extends CmsRoutingProvider
      */
     protected function getApiRoute()
     {
-        return __DIR__.'/../Http/routes-api.php';
+        return __DIR__ . '/../Http/routes-api.php';
     }
 
     public function boot()
     {
         parent::boot();
-
         Route::bind('admin_module_name', function ($id) {
             return (new Module())->findOrFail($id);
         });
-
         Route::bind('admin_nav_name', function ($name) {
             return (new Navigation())
                 ->with('links')
                 ->where('name', $name)
                 ->firstOrFail();
         });
-
         Route::bind('admin_link_id', function ($id) {
             return (new NavigationLink())->findOrFail($id);
         });
-
         Route::bind('admin_widget_id', function ($id) {
             return (new Widget())
                 ->with('options')

@@ -1,5 +1,4 @@
 <?php
-
 namespace Cms\Modules\Admin\Http\Middleware;
 
 use Closure;
@@ -28,7 +27,7 @@ class AuthAdminMiddleware
      * Handle an incoming request.
      *
      * @param \Illuminate\Http\Request $request
-     * @param \Closure                 $next
+     * @param \Closure $next
      *
      * @return mixed
      */
@@ -42,7 +41,6 @@ class AuthAdminMiddleware
                     ->withError(trans('auth::auth.permissions.authenticated'));
             }
         }
-
         if (!$this->auth->user()->isAdmin()) {
             if ($request->ajax()) {
                 return response('Unauthorized.', 401);
@@ -51,7 +49,6 @@ class AuthAdminMiddleware
                     ->withError(trans('auth::auth.permissions.unauthorized'));
             }
         }
-
         return $next($request);
     }
 }

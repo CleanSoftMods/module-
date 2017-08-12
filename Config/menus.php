@@ -1,7 +1,5 @@
 <?php
-
 return [
-
     'backend_sidebar' => [
         'Site Management' => [
             'children' => [
@@ -21,24 +19,23 @@ return [
                     'permission' => 'theme@admin_config',
                 ],
                 [
-                   'route' => 'admin.modules.manager',
-                   'text' => 'Module Manager',
-                   'icon' => 'fa-puzzle-piece',
-                   'order' => 3,
-                   'permission' => 'manage@admin_modules',
+                    'route' => 'admin.modules.manager',
+                    'text' => 'Module Manager',
+                    'icon' => 'fa-puzzle-piece',
+                    'order' => 3,
+                    'permission' => 'manage@admin_modules',
                 ],
                 [
-                   'route' => 'admin.nav.manager',
-                   'text' => 'Navigation Manager',
-                   'icon' => 'fa-list-ul',
-                   'order' => 4,
-                   'permission' => 'manage@admin_nav',
+                    'route' => 'admin.nav.manager',
+                    'text' => 'Navigation Manager',
+                    'icon' => 'fa-list-ul',
+                    'order' => 4,
+                    'permission' => 'manage@admin_nav',
                     'activePattern' => '\/{backend}\/navigation\/*',
                 ],
             ],
         ],
     ],
-
     'backend_config_menu' => [
         [
             'route' => 'admin.config.website',
@@ -83,5 +80,4 @@ return [
             'permission' => 'debug@admin_config',
         ],
     ],
-
 ];

@@ -1,5 +1,4 @@
 <?php
-
 namespace Cms\Modules\Admin\Http\Controllers\Backend\Config;
 
 use Cms\Modules\Admin\Datatables\DashboardWidgetsManager;
@@ -16,7 +15,6 @@ class DashboardController extends BaseConfigController
     public function boot()
     {
         $this->dashboard = app(DashboardService::class);
-
         parent::boot();
     }
 
@@ -28,19 +26,16 @@ class DashboardController extends BaseConfigController
     private function getDataTableHtml($data)
     {
         $this->dashboard->loadWidgetAssets();
-
         // replace all the widgets in the dashboard with admin-blank's for preview
-        $data['gridLayout'] = collect($this->dashboard->getGridLayout())
+        /*$data['gridLayout'] = collect($this->dashboard->getGridLayout())
             ->map(function ($widget) {
                 array_set($widget, 'options.title', array_get($widget, 'id'));
                 array_set($widget, 'component', 'admin-blank');
 
                 return $widget;
             })
-            ->toArray();
-
+            ->toArray();*/
         $data['builder'] = app(HtmlBuilder::class);
-
         return $this->setView('admin.config.dashboard', $data, 'module:admin');
     }
 }

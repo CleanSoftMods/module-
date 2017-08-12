@@ -1,5 +1,4 @@
 <?php
-
 namespace Cms\Modules\Admin\Http\Controllers\Backend\Dashboard;
 
 use Cms\Modules\Admin\Http\Controllers\Backend\BaseAdminController;
@@ -11,13 +10,11 @@ class DashboardController extends BaseAdminController
     public function getIndex(DashboardService $dashboard)
     {
         $this->theme->setTitle('Dashboard');
-        $dashboard->loadWidgetAssets();
-
+        //$dashboard->loadWidgetAssets();
         $builder = app(HtmlBuilder::class);
-        $gridLayout = $dashboard->getGridLayout();
-
+        //$gridLayout = $dashboard->getGridLayout();
         return $this->setView('admin.dashboard.index', [
-            'gridLayout' => $gridLayout,
+            //'gridLayout' => $gridLayout,
             'builder' => $builder,
         ], 'module');
     }

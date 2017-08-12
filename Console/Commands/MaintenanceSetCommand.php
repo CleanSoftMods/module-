@@ -1,5 +1,4 @@
 <?php
-
 namespace Cms\Modules\Admin\Console\Commands;
 
 use Illuminate\Console\Command;
@@ -19,22 +18,19 @@ class MaintenanceSetCommand extends Command
         if ($this->argument('setting') !== null) {
             $newSetting = ($this->argument('setting') === 'on' ? true : false);
         }
-
         switch ($newSetting) {
             case null :
-                $this->info('Maintenance Turned: '.(!$configValue ? 'On' : 'Off'));
+                $this->info('Maintenance Turned: ' . (!$configValue ? 'On' : 'Off'));
                 save_config_var($settingStr, (!$configValue ? 'true' : 'false'));
-            break;
-
+                break;
             case true :
                 $this->info('Maintenance Turned: On');
                 save_config_var($settingStr, 'true');
-            break;
-
+                break;
             case false :
                 $this->info('Maintenance Turned: Off');
                 save_config_var($settingStr, 'false');
-            break;
+                break;
         }
         $this->callSilent('cache:clear');
     }

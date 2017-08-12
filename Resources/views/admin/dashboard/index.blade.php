@@ -1,4 +1,4 @@
-<div class="dashboard">
+{{--<div class="dashboard">
 @forelse($gridLayout as $widget)
     @set($component, array_get($widget, 'component'))
     @set($options, array_get($widget, 'options'))
@@ -7,15 +7,15 @@
     <{{ $component }}{!! $builder->attributes($options) !!}></{{ $component }}>
 @empty
 @endforelse
-</div>
+</div>--}}
 
 <script>
-window.Laravel = {
+  window.Laravel = {
     csrfToken: '{{ csrf_token() }}',
     apiKey: 'dashboard_4y2424h2784h923492h'
-};
+  };
 
-window.Vue = new Vue({
+  window.Vue = new Vue({
     el: '.dashboard'
-});
+  });
 </script>

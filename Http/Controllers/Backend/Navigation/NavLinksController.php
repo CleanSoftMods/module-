@@ -1,5 +1,4 @@
 <?php
-
 namespace Cms\Modules\Admin\Http\Controllers\Backend\Navigation;
 
 use Cms\Modules\Admin\Http\Controllers\Backend\BaseAdminController;
@@ -16,9 +15,7 @@ class NavLinksController extends BaseAdminController
         $this->theme->setTitle(sprintf('Manage Navigation > %s', $nav->name));
         $this->theme->breadcrumb()->add('Manage Navigation', route('admin.nav.manager'));
         $this->theme->breadcrumb()->add('Nav Update', route('admin.nav.update', $nav->name));
-
         Former::populate($navLink);
-
         return $this->setView('admin.nav-links.form', compact('nav'));
     }
 
@@ -27,18 +24,14 @@ class NavLinksController extends BaseAdminController
         $this->theme->setTitle(sprintf('Manage Navigation > %s', $nav->name));
         $this->theme->breadcrumb()->add('Manage Navigation', route('admin.nav.manager'));
         $this->theme->breadcrumb()->add('Nav Update', route('admin.nav.update', $nav->name));
-
         Former::populate($navLink);
-
         return $this->setView('admin.nav-links.form', compact('nav'));
     }
 
     public function store(Navigation $nav, NavigationLink $navLink, BackendCreateNavLinkRequest $request)
     {
         $input = $request->only(['title', 'class', 'blank', 'url', 'route']);
-
         $input['navigation_id'] = $nav->id;
-
         $link = with(new NavigationLink())->updateOrCreate(
             [
                 'navigation_id' => $nav->id,
@@ -46,12 +39,10 @@ class NavLinksController extends BaseAdminController
             ],
             $input
         );
-
         if ($link->save() === false) {
             return redirect()->back()
                 ->withErrors($link->getErrors());
         }
-
         return redirect()->to(route('admin.nav.update', $nav->name))
             ->withInfo('Link Created/Updated');
     }
@@ -59,12 +50,10 @@ class NavLinksController extends BaseAdminController
     public function postDown(Navigation $nav, NavigationLink $link, Request $input)
     {
         ++$link->order;
-
         if ($link->save() === false) {
             return redirect()->to(route('admin.nav.update', $nav->name))
                 ->withError('Link order wasn\'t updated. Please try again.');
         }
-
         return redirect()->to(route('admin.nav.update', $nav->name))
             ->withInfo('Link Order updated successfully.');
     }
@@ -76,12 +65,10 @@ class NavLinksController extends BaseAdminController
         } else {
             --$link->order;
         }
-
         if ($link->save() === false) {
             return redirect()->to(route('admin.nav.update', $nav->name))
                 ->withError('Link order wasn\'t updated. Please try again.');
         }
-
         return redirect()->to(route('admin.nav.update', $nav->name))
             ->withInfo('Link Order updated successfully.');
     }
